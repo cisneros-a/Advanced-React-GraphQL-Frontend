@@ -1,0 +1,42 @@
+Server side flickering of Styled Components:
+    - The server is rendering the first run of the react application.
+    - Our client side react is taking it from there. 
+    - It will then, after the inital mount of components, 
+        pick up the styled components. 
+    - With server side rendering, everything needs to be fetched and
+        prepped before it sends to the browser. 
+    -However, we need that inital css to render instantly.
+
+    -Thankfully, Next has solved this with a lifecycle method
+        , getInitialProps and custom documents.
+
+
+GraphQL (Graph Query Language)
+    - Not like a typical restful API. Has only a single end point.
+        - Getting information is called making a query.
+        - You can be very specific about your requests.
+        - However, you cannot filter results like a typical API. You cannot ask
+            for all items from a specific user or all items of a particular name.
+        - However, we can get more specific with our requests using Prisma, 
+            allowing us to ask "* item WHERE user is ..."
+            - Prisma is open-source library that sits on top of an existing or new DB
+                that provides a full-featured GraphQL API, CRUD operations.
+            - It does all the heavy lifting for quering, mutations, and relations.
+        - GraphQL Yoga allows us to add custom server side logic.
+            - 
+    - Making PUSH or PATCH requests are called Mutations.
+
+How React.js, Apollo client, GraphQL, and Prisma will interact.
+    - React is going to use Apollo Client to query our GraphQl Yoga endpoint.
+    - Then on the server, Yoga will connect to Prisma db and pull the data back and forth.
+    - Prisma is equivalent to a MongoDB or PostgresSQL and Yoga is the controller that
+        will query our DB and return the information to our client.
+
+Apollo Client
+    - This what we use for React to speak to GraphQL Yoga.
+    - It reaplces the need for redux + data fetching/caching libraries.
+        - Under the hood, Apollo Client uses Redux.
+    - Gives us our Error and Loading UI States
+
+Render Props
+    - 

@@ -38,5 +38,11 @@ Apollo Client
         - Under the hood, Apollo Client uses Redux.
     - Gives us our Error and Loading UI States
 
-Render Props
-    - 
+Problem with cache invalidation: (Look out for updates from Apollo on this!)
+    - If we wanted to add a new item in CreateItem.js, we would need to refresh the page to have it
+        show up in our Shop page. 
+    - This is because we have the items saved in the cache, so we do not have to trigger a refetch 
+        every time we hit the Shop page.
+    - But because we have multiple things stored in the cache like all items and cart items,
+        we cannot clear the cache.
+    - There is no partial cache invalidation atm. 

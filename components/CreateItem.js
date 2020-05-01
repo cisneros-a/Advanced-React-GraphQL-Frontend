@@ -68,6 +68,7 @@ class CreateItem extends Component {
 
   render() {
     return (
+      // We could pass a "refetchQueries" property to fetch all the qeuries again when we created a new item"
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, { loading, error }) => (
           <Form

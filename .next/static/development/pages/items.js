@@ -498,7 +498,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _styles_PaginationStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/PaginationStyles */ "./components/styles/PaginationStyles.js");
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config */ "./config.js");
-var _jsxFileName = "/Users/Adrian/Desktop/git-Advanced_React/frontend/components/Pagination.js";
+var _jsxFileName = "/Users/Adrian/Desktop/Advanced_React/frontend/components/Pagination.js";
 
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n  # we don't need any arguments for this query. look at schema.graphql!\n  query PAGINATION_QUERY {\n    itemsConnection {\n      aggregate {\n        count\n      }\n    }\n  }\n"]);
@@ -29794,7 +29794,7 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Items__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Items */ "./components/Items.js");
-var _jsxFileName = "/Users/Adrian/Desktop/git-Advanced_React/frontend/pages/index.js";
+var _jsxFileName = "/Users/Adrian/Desktop/Advanced_React/frontend/pages/index.js";
 
 
 
@@ -29872,7 +29872,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/items.js ***!
   \******************************/
@@ -29897,5 +29897,5 @@ module.exports = dll_18682c416555df0bf0b9;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]));;
+},[[4,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=items.js.map

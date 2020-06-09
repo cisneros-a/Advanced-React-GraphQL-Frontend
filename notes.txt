@@ -46,3 +46,8 @@ Problem with cache invalidation: (Look out for updates from Apollo on this!)
     - But because we have multiple things stored in the cache like all items and cart items,
         we cannot clear the cache.
     - There is no partial cache invalidation atm. 
+
+Optimisic Response?
+    - This was great when removing our cart items. (RemoveFromCart.js)
+    - It allowed us to show the update on the page without having 
+       wait for the response from the DB.

@@ -1,5 +1,5 @@
 import React from "react";
-import Downshift from "downshift";
+import Downshift, { resetIdCounter } from "downshift";
 import Router from "next/router";
 import { ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
@@ -25,6 +25,15 @@ const SEARCH_ITEMS_QUERY = gql`
   }
 `;
 
+function routeToItem(item) {
+  Router.push({
+    pathname: "/item",
+    query: {
+      id: item.id,
+    },
+  });
+}
+
 class AutoComplete extends React.Component {
   state = {
     items: [],
@@ -45,32 +54,68 @@ class AutoComplete extends React.Component {
     });
   }, 350);
   render() {
+    resetIdCounter();
     return (
       <SearchStyles>
-        <div>
-          {/* Instead of wrapping out input in a <Query/> (which would query every time we render our search compinent,
+        <Downshift
+          onChange={routeToItem}
+          itemToString={(item) => (item === null ? "" : item.title)}
+        >
+          {({
+            getInputProps,
+            getItemProps,
+            isOpen,
+            inputValue,
+            highlightedIndex,
+          }) => (
+            <div>
+              {/* Instead of wrapping out input in a <Query/> (which would query every time we render our search compinent,
                 we can wrap it in ApolloConsumer to expose our client to the input 
                 )*/}
-          <ApolloConsumer>
-            {(client) => (
-              <input
-                type="search"
-                onChange={(e) => {
-                  e.persist();
-                  this.onChange(e, client);
-                }}
-              />
-            )}
-          </ApolloConsumer>
-          <DropDown>
-            {this.state.items.map((item) => (
-              <DropDownItem key={item.id}>
-                <img width="50" src={item.image} alt={item.title} />
-                {item.title}
-              </DropDownItem>
-            ))}
-          </DropDown>
-        </div>
+              <ApolloConsumer>
+                {(client) => (
+                  <input
+                    //getIntputProps it will let us fill in the text from the item we select to the input
+                    {...getInputProps({
+                      type: "search",
+                      placeholder: "Search for an item",
+                      id: "search",
+                      className: this.state.loading ? "laoding" : "",
+                      onChange: (e) => {
+                        e.persist();
+                        this.onChange(e, client);
+                      },
+                    })}
+                  />
+                )}
+              </ApolloConsumer>
+              {/* Dropdown library is what gives us the isOpen, which allows us to click away from the search bar or press esc */}
+              {isOpen && (
+                <DropDown>
+                  {this.state.items.map((item, index) => (
+                    <DropDownItem
+                      {...getItemProps({ item })}
+                      key={item.id}
+                      //highlightedIndex comes from Dropdown, but highlighted is a prop we make that we can pass down
+                      //if you look at the styles in DropdownItem, you'll this this only returns a boolean
+                      highlighted={index === highlightedIndex}
+                    >
+                      <img width="50" src={item.image} alt={item.title} />
+                      {item.title}
+                    </DropDownItem>
+                  ))}
+                  {!this.state.items.length && !this.state.loading && (
+                    // inputVzlue is coming from DownShift
+                    <DropDownItem>
+                      {" "}
+                      Nothing found for {inputValue}{" "}
+                    </DropDownItem>
+                  )}
+                </DropDown>
+              )}
+            </div>
+          )}
+        </Downshift>
       </SearchStyles>
     );
   }

@@ -7,6 +7,9 @@ const PleaseSignIn = (props) => (
     {({ data, loading }) => {
       if (loading) return <p>Loading...</p>;
       if (!data.me) {
+        {
+          console.log(me);
+        }
         return (
           <div>
             <p>Please Sign In!</p>
